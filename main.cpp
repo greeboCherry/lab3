@@ -12,6 +12,10 @@
 
 #include "Slav.h"
 
+//Moje include
+#include<cstdlib>
+
+
 #define REPORT_ADAPTERS showMeAdapterSizes(queueOfSlavs,stackOfSlavs)
 #define REPORT_CONTAINERS showMeContainerSizes(vectorOfSlavs,setOfSlavs,mapOfSlavs)
 
@@ -25,6 +29,8 @@ void adapters(Slav *, int);
 
 int main(int argc, char const *argv[])
 {
+    srand(123);
+
 	int n = 2 * atoi(argv[1]);
 	Slav *slavs = new Slav[n];
 	cout << "# Generated Slavs" << endl;
@@ -42,27 +48,35 @@ void containers(Slav * slavs, int n)
 	vector <Slav *> vectorOfSlavs;
 	set <Slav *> setOfSlavs;
 	map <Slav *, Slav *> mapOfSlavs;
-	
+
 	printf("# Containers\n");
 	REPORT_CONTAINERS;
 	printf("## vector\n");
 
 	// Umieść Słowian w losowej kolejności w wektorze.
+	for (int i=0; i<n;i++)
+    {
+        vectorOfSlavs.insert(vectorOfSlavs.begin() + rand()% (vectorOfSlavs.size()+1),slavs+i);
+    }
 
 	// Wykorzystując iterator i funkcję description(), wyświetl wszystkich Słowian w wektorze
+    for(vector<Slav *>::iterator it=vectorOfSlavs.begin();it<vectorOfSlavs.end(); it++)
+    {
+        (*it) -> description();
+    }
 
 	REPORT_CONTAINERS;
 	printf("## set\n");
 
 	// Przenieś wszystkich Słowian z wektoru do zbioru.
-	
+
 	REPORT_CONTAINERS;
 	printf("## map\n");
 
 	// Stwórz słownik tworzący pary Słowian, z tych znajdujących się w zbiorze, czyszcząc zbiór
-	
+
 	// Wykorzystując iterator, wyświetl wszystkie pary Słowian
-	
+
 	REPORT_CONTAINERS;
 }
 
@@ -76,7 +90,7 @@ void adapters(Slav * slavs, int n)
 	printf("## queue\n");
 
 	// Umieść Słowian w kolejce.
-	
+
 	REPORT_ADAPTERS;
 
 	printf("## stack\n");
