@@ -1,6 +1,8 @@
 #include "Slav.h"
 #include <fstream>
-
+#include <cstdlib> //srand, rand
+#include <iterator>
+//#include <string>
 using namespace std;
 
 vector <string> Slav::names;

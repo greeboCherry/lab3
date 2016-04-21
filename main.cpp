@@ -62,20 +62,37 @@ void containers(Slav * slavs, int n)
 	// Wykorzystując iterator i funkcję description(), wyświetl wszystkich Słowian w wektorze
     for(vector<Slav *>::iterator it=vectorOfSlavs.begin();it<vectorOfSlavs.end(); it++)
     {
-        (*it) -> description();
+
+        cout<<(*it) -> description()<<endl;
     }
 
 	REPORT_CONTAINERS;
 	printf("## set\n");
 
 	// Przenieś wszystkich Słowian z wektoru do zbioru.
+	for(vector<Slav *>::iterator it=vectorOfSlavs.end();it>vectorOfSlavs.begin(); it--)
+    {
+    		setOfSlavs.insert(*it);
+    		vectorOfSlavs.pop_back();
+    }
+
 
 	REPORT_CONTAINERS;
 	printf("## map\n");
 
 	// Stwórz słownik tworzący pary Słowian, z tych znajdujących się w zbiorze, czyszcząc zbiór
+	
+	for (set<Slav *>::iterator it = setOfSlavs.begin(); it != setOfSlavs.end(); it++, it++)
+	{
+		mapOfSlavs.insert(pair<Slav *, Slav *> ((*it),(*it+1) ) );
+	}
 
 	// Wykorzystując iterator, wyświetl wszystkie pary Słowian
+
+//	for (map<Slav *>::iterator it = mapOfSlavs.begin(); it < mapOfSlavs.end(); it++)
+	{
+					
+	}
 
 	REPORT_CONTAINERS;
 }
