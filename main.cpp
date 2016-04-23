@@ -82,18 +82,25 @@ void containers(Slav * slavs, int n)
 
 	// Stwórz słownik tworzący pary Słowian, z tych znajdujących się w zbiorze, czyszcząc zbiór
 	
-	for (set<Slav *>::iterator it = setOfSlavs.begin(); it != setOfSlavs.end(); it++, it++)
+	for (set<Slav *>::iterator it = setOfSlavs.end(); it != setOfSlavs.begin(); --it, --it)
 	{
-		mapOfSlavs.insert(pair<Slav *, Slav *> ((*it),(*it+1) ) );
+//						printf("%p\n", --it);
+		mapOfSlavs.insert(pair<Slav *, Slav *> ((*it),(*it-1) ) );
+		setOfSlavs.erase(*it);
+		setOfSlavs.erase(*it-1);
+
+
 	}
 
 	// Wykorzystując iterator, wyświetl wszystkie pary Słowian
-
-//	for (map<Slav *>::iterator it = mapOfSlavs.begin(); it < mapOfSlavs.end(); it++)
+/*
+	for (map<Slav *,Slav *>::iterator it = mapOfSlavs.begin(); it != mapOfSlavs.end(); it++)
 	{
-					
+		printf("%p\n", mapOfSlavs.begin());
+		printf("%p\n", it);
+		(it->second)->description();
 	}
-
+*/
 	REPORT_CONTAINERS;
 }
 
