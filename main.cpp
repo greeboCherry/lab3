@@ -82,11 +82,11 @@ void containers(Slav * slavs, int n)
 
 	// Stwórz słownik tworzący pary Słowian, z tych znajdujących się w zbiorze, czyszcząc zbiór
 	
-	for (set<Slav *>::iterator it = setOfSlavs.begin(); it != setOfSlavs.end(); ++it, ++it)
+	for (set<Slav *>::iterator it = setOfSlavs.begin(); it != setOfSlavs.end(); it++, it++)
 	{
-//						printf("%p\n", --it);
-//		mapOfSlavs.insert(pair<Slav *, Slav *> ((*it) ) );
-		mapOfSlavs[*it]=*(it)+1;
+						printf("%p\n", it);
+		mapOfSlavs.insert(pair<Slav *, Slav *> ( (*it), (*it-1) ) );
+		//mapOfSlavs[*it]=*(it)+2;
 		
 	}
 	setOfSlavs.clear(); //Chciałbym (naprawde) czyścić zbiór w pętli, po dwa elementy, ale coś mi nie wychodzi. Za mało kawy?
